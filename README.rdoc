@@ -1,19 +1,26 @@
-= exacttarget
+= ExactTarget -- XML API client for the ExactTarget email system
 
-Description goes here.
+ExactTarget is a client system for communicating with the ExactTarget email system. The client
+supports the most up-to-date XML API and is capable of uploading email pastes, images and retrieving
+lists of subscribers, emails and more.
 
-== Contributing to exacttarget
- 
-* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
-* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
-* Fork the project
-* Start a feature/bugfix branch
-* Commit and push until you are happy with your contribution
-* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+== Download and installation
 
-== Copyright
+The latest version of ExactTarget can be installed with Rubygems:
 
-Copyright (c) 2011 Matthew Simpson. See LICENSE.txt for
-further details.
+  % [sudo] gem install exacttarget
+  
+Source code can be downloaded on GitHub
+
+* https://github.com/msimpson/exacttarget
+
+== License
+
+ExactTarget is released under the MIT license.
+See LICENSE.txt for further details.
+
+== Support
+
+API documentaiton will be available soon. But until then,
+email all bugs, concerns, etc. to matt.simpson@alextom.com.
 
