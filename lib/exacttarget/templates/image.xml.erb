@@ -3,9 +3,11 @@
   <system_name>filemanagement</system_name>
   <action>filemove</action>
   <source>
-    <location><%= @location %></location>
+    <location><%= @ftp_location %></location>
     <files>
-      <filename><%= file %></filename>
+      <% @files.each do |file| %>
+        <filename><%= file %></filename>
+      <% end %>
     </files>
   </source>
   <destination>imageimport</destination>

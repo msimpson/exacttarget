@@ -1,13 +1,31 @@
 module ExactTarget
+  FTP_STANDARD  = 'ExactTargetFTP'
+  FTP_ENHANCED  = 'ExactTargetEnhancedFTP'
+  FTP_ENCRYPTED = 'ExactTargetEncryptedFTP'
+
   class Client
-  
-    attr_reader :username, :password
+
+    attr_reader :username,
+                :password,
+                :ftp_username,
+                :ftp_password
     
     public
     
-    def initialize(username, password)
-      @username = username
-      @password = password
+    def initialize(
+          username,
+          password,
+          ftp_location = FTP_STANDARD,
+          ftp_username = 'import',
+          ftp_password = 'import'
+        )
+      
+      @username     = username
+      @password     = password
+      @ftp_location = ftp_location
+      @ftp_username = ftp_username
+      @ftp_password = ftp_password
+      
       @uri = URI.parse('https://api.dc1.exacttarget.com/integrate.asp')
       @url = Net::HTTP.new(@uri.host, @uri.port)
       @url.use_ssl = true
