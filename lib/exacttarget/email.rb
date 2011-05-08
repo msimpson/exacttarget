@@ -64,7 +64,9 @@ module ExactTarget
       @value = id.to_s
       
       begin
-        send(render(:email))
+        Nokogiri::XML(send(render(:email)))
+          .xpath('htmlbody')
+          .gsub /<!\[CDATA\[(.*?)\]\]>/, '\1'
       rescue
         nil
       end
