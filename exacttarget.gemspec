@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Matthew Simpson"]
-  s.date = %q{2011-05-07}
+  s.date = %q{2011-05-08}
   s.description = %q{ExactTarget is a client system for communicating with the ExactTarget email system. The client supports the most up-to-date XML API and is capable of uploading email pastes, images and retrieving lists of subscribers, emails and more.}
   s.email = %q{matt.simpson@alextom.com}
   s.extra_rdoc_files = [
@@ -29,7 +29,8 @@ Gem::Specification.new do |s|
     "lib/exacttarget/client.rb",
     "lib/exacttarget/email.rb",
     "lib/exacttarget/templates/email.xml.erb",
-    "lib/exacttarget/templates/main.xml.erb"
+    "lib/exacttarget/templates/main.xml.erb",
+    "nokogiri_to_hash/nokogiri_to_hash.rb"
   ]
   s.homepage = %q{http://github.com/msimpson/exacttarget}
   s.licenses = ["MIT"]
