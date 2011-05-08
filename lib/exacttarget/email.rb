@@ -8,20 +8,20 @@ module ExactTarget
     end
     
     def email_find_by_id(id)
-      email_search :id, id
+      email_search :id, id, true
     end
     
-    def email_find_by_name(name)
-      email_search :name, name
+    def email_find_by_name(name, get_body = false)
+      email_search :name, name, get_body
     end
     
-    def email_find_by_subject(subject)
-      email_search :subject, subject
+    def email_find_by_subject(subject, get_body = false)
+      email_search :subject, subject, get_body
     end
     
     private
     
-    def email_search(filter = :all, value = '')
+    def email_search(filter = :all, value = '', get_body = false)
       # ExactTarget does not return more than one email
       # for any search besides all. So we must grab the
       # entire list and search here (slow, but necessary).
@@ -41,7 +41,7 @@ module ExactTarget
             next if !email.send('email' + filter.to_s).content.include? value.to_s
           end
           
-          body = email_get_body(email.emailid.content)
+          body = (email_get_body(email.emailid.content) if get_body) || nil
           
           email.instance_eval do
             list << {
