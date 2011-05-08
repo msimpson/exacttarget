@@ -30,7 +30,7 @@ module ExactTarget
     private
     
     def render(template)
-      path   = File.join(File.dirname(__FILE__), "templates/#{name.to_s}.xml.erb")
+      path   = File.join(File.dirname(__FILE__), "templates/#{template.to_s}.xml.erb")
       handle = File.open(path, 'r').read
       ERB.new(handle, 0, "<>").result
     end

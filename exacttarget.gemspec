@@ -19,11 +19,16 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
     "Gemfile",
+    "Gemfile.lock",
     "LICENSE.txt",
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "lib/exacttarget.rb"
+    "exacttarget.gemspec",
+    "lib/exacttarget.rb",
+    "lib/exacttarget/client.rb",
+    "lib/exacttarget/templates/email.xml.erb",
+    "lib/exacttarget/templates/main.xml.erb"
   ]
   s.homepage = %q{http://github.com/msimpson/exacttarget}
   s.licenses = ["MIT"]
