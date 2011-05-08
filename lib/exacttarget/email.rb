@@ -3,68 +3,88 @@ module ExactTarget
   
     public
     
-    def email_find_all
-      email_search
+    def email_find_by_id(id, options = {})
+      email_find({
+        :id => id,
+        :body => true
+      }.merge(options))
     end
     
-    def email_find_by_id(id)
-      email_search :id, id, true
+    def email_find_by_name(name, options = {})
+      email_find({
+        :name => name,
+      }.merge(options))
     end
     
-    def email_find_by_name(name, get_body = false)
-      email_search :name, name, get_body
+    def email_find_by_subject(subject, options = {})
+      email_find({
+        :subject => subject,
+      }.merge(options))
     end
     
-    def email_find_by_subject(subject, get_body = false)
-      email_search :subject, subject, get_body
-    end
-    
-    private
-    
-    def email_search(filter = :all, value = '', get_body = false)
-      # ExactTarget does not return more than one email
-      # for any search besides all. So we must grab the
-      # entire list and search here (slow, but necessary).
-      
-      @action = 'retrieve'
+    def email_find(options = {})
+      @action     = 'retrieve'
       @sub_action = 'all'
-      @type = ''
-      @value = ''
+      @type       = ''
+      @value      = ''
       
-      list = []
+      id          = options[:id]      || false
+      name        = options[:name]    || false
+      subject     = options[:subject] || false
+      start_date  = options[:start]   || false
+      end_date    = options[:end]     || false
+      get_body    = options[:body]    || false
+      list        = []
+      
+      format = Proc.new { |date|
+        begin
+          date if date.instance_of? Date
+          Date.strptime(date, '%m/%d/%Y')
+        rescue
+          raise '[ExactTarget] Error: Invalid date.'
+        end
+      }
+      
       Nokogiri::Slop(send(render(:email)))
         .exacttarget
         .system
         .email
         .emaillist.each do |email|
-          case filter
-            when :id
-              next if email.emailid.content != value.to_s
-            when :name, :subject
-              next if !email.send('email' + filter.to_s).content.include? value.to_s
-          end
+          (next if email.emailid.content != id.to_s) if id
+          (next if !email.emailname.content.include? name.to_s) if name
+          (next if !email.emailsubject.content.include? subject.to_s) if subject
           
-          body = (email_get_body(email.emailid.content) if get_body) || nil
+          date = format.call(email.emailcreateddate.content)
+          
+          (next if date < format.call(start_date)) if start_date
+          (next if date > format.call(end_date)) if end_date
+          
+          body = email_get_body(email.emailid.content) if get_body
           
           email.instance_eval do
-            list << {
+            new = {
               :id           => emailid.content,
               :name         => emailname.content,
               :subject      => emailsubject.content,
-              :category_id  => categoryid.content,
-              :body         => body
+              :date         => email.emailcreateddate.content,
+              :category_id  => categoryid.content
             }
+            
+            new[:body] = body if get_body
+            list << new
           end
       end
       
       list
     end
     
+    private
+    
     def email_get_body(id)
-      @action = 'retrieve'
+      @action     = 'retrieve'
       @sub_action = 'htmlemail'
-      @type = 'emailid'
-      @value = id.to_s
+      @type       = 'emailid'
+      @value      = id.to_s
       
       begin
         Nokogiri::XML(send(render(:email)))
@@ -75,5 +95,4 @@ module ExactTarget
     end
     
   end
-
 end

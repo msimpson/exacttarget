@@ -33,7 +33,7 @@ module ExactTarget
           }
         ).body
       rescue SocketError
-        puts '[ExactTarget] Error: API request failed (SocketError).'
+        raise '[ExactTarget] Error: API request failed (SocketError).'
       end
     end
     

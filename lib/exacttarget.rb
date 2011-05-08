@@ -2,7 +2,7 @@
 begin
   require 'nokogiri'
 rescue LoadError
-  puts '[ExactTarget] Error: Nokogiri is missing, run "bundle install".'
+  raise '[ExactTarget] Error: Nokogiri is missing, run "bundle install".'
 end
 
 # Standard:
