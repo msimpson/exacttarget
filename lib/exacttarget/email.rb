@@ -32,9 +32,7 @@ module ExactTarget
       @value = ''
       
       list = []
-      result = send render(:email)
-      puts result
-      result
+      send(render(:email))
         .exacttarget
         .system
         .email
@@ -48,7 +46,7 @@ module ExactTarget
               :id           => emailid.content,
               :name         => emailname.content,
               :subject      => emailsubject.content,
-              :category_id  => category_id.content,
+              :category_id  => categoryid.content,
               :body         => email_get_body(emailid.content)
             }
           end
