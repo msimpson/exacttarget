@@ -1,8 +1,8 @@
 = ExactTarget -- XML API client for the ExactTarget email system
 
-ExactTarget is a client system for communicating with the ExactTarget email system. The client
-supports the most up-to-date XML API and is capable of uploading email pastes, images and retrieving
-lists of subscribers, emails and more.
+ExactTarget is a library for communicating with the ExactTarget email system. The library
+supports the most up-to-date XML API and is capable of uploading email pastes, images and
+retrieving lists of subscribers, emails and more.
 
 == Download and installation
 

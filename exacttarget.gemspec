@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{exacttarget}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Matthew Simpson"]
@@ -28,7 +28,9 @@ Gem::Specification.new do |s|
     "lib/exacttarget.rb",
     "lib/exacttarget/client.rb",
     "lib/exacttarget/email.rb",
+    "lib/exacttarget/image.rb",
     "lib/exacttarget/templates/email.xml.erb",
+    "lib/exacttarget/templates/image.xml.erb",
     "lib/exacttarget/templates/main.xml.erb"
   ]
   s.homepage = %q{http://github.com/msimpson/exacttarget}
