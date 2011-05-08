@@ -64,16 +64,7 @@ module ExactTarget
       @value = id.to_s
       
       begin
-        result = send(render(:email))
-        puts result
-        result
-          .exacttarget
-          .system
-          .email
-          .htmlbody
-          .content
-        
-        result.gsub /<!\[CDATA\[(.*?)\]\]>/, '\1'
+        send(render(:email))
       rescue
         nil
       end
