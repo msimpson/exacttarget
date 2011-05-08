@@ -4,9 +4,7 @@ module ExactTarget
     public
     
     def email_find_all(body = false)
-      email_find({
-        :body => body
-      }.merge(options))
+      email_find({ :body => body })
     end
     
     def email_find_by_id(id, options = {})
