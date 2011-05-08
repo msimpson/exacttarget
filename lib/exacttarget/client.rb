@@ -26,14 +26,12 @@ module ExactTarget
       post = 'qf=xml&xml=' + URI.escape(render(:main))
       
       begin
-        Nokogiri::Slop(
-          @url.post(@uri.path, post,
-            {
-              'Content-Type' => 'application/x-www-form-urlencoded',
-              'Content-length' => post.length.to_s
-            }
-          ).body
-        )
+        @url.post(@uri.path, post,
+          {
+            'Content-Type' => 'application/x-www-form-urlencoded',
+            'Content-length' => post.length.to_s
+          }
+        ).body
       rescue SocketError
         puts '[ExactTarget] Error: API request failed (SocketError).'
       end

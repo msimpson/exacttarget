@@ -32,7 +32,7 @@ module ExactTarget
       @value = ''
       
       list = []
-      send(render(:email))
+      Nokogiri::Slop(send(render(:email)))
         .exacttarget
         .system
         .email
