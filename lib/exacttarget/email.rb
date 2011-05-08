@@ -32,9 +32,7 @@ module ExactTarget
       @value = ''
       
       list = []
-      result = send(render(:email))
-      puts result
-      result
+      send(render(:email))
         .exacttarget
         .system
         .email
@@ -65,14 +63,18 @@ module ExactTarget
       @type = 'emailid'
       @value = id.to_s
       
-      result = send(render(:email))
-        .exacttarget
-        .system
-        .email
-        .htmlbody
-        .content
-      
-      result.gsub /<!\[CDATA\[(.*?)\]\]>/, '\1'
+      begin
+        result = send(render(:email))
+          .exacttarget
+          .system
+          .email
+          .htmlbody
+          .content
+        
+        result.gsub /<!\[CDATA\[(.*?)\]\]>/, '\1'
+      rescue
+        nil
+      end
     end
     
   end
