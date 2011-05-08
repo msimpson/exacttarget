@@ -3,7 +3,7 @@ require 'nokogiri'
 require 'uri'
 require 'erb'
 
-module ExactTarget
+class ExactTarget
   class Client
   
     attr_reader :username, :password
@@ -15,18 +15,6 @@ module ExactTarget
       @url = Net::HTTP.new(@uri.host, @uri.port)
       @url.use_ssl = true
     end
-    
-    # Methods
-    
-    def retrieve_email_ids
-      @action = 'retrieve'
-      @sub_action = 'all'
-      @type = ''
-      @value = ''
-      send render(:email)
-    end
-
-    # -------
     
     private
     
