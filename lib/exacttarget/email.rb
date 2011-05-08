@@ -39,7 +39,7 @@ module ExactTarget
         .emaillist.each do |email|
           case filter
             when :id
-              next if !email.emailid.content == value.to_s
+              next if email.emailid.content != value.to_s
             when :name, :subject
               next if !email.send('email' + filter.to_s).content.include? value.to_s
           end
