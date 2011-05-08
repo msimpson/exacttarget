@@ -66,7 +66,6 @@ module ExactTarget
       begin
         Nokogiri::XML(send(render(:email)))
           .xpath('htmlbody')
-          .gsub /<!\[CDATA\[(.*?)\]\]>/, '\1'
       rescue
         nil
       end
