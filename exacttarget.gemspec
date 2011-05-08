@@ -29,8 +29,7 @@ Gem::Specification.new do |s|
     "lib/exacttarget/client.rb",
     "lib/exacttarget/email.rb",
     "lib/exacttarget/templates/email.xml.erb",
-    "lib/exacttarget/templates/main.xml.erb",
-    "nokogiri_to_hash/nokogiri_to_hash.rb"
+    "lib/exacttarget/templates/main.xml.erb"
   ]
   s.homepage = %q{http://github.com/msimpson/exacttarget}
   s.licenses = ["MIT"]
