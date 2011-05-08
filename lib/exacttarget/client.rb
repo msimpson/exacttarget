@@ -1,8 +1,3 @@
-require 'net/https'
-require 'nokogiri'
-require 'uri'
-require 'erb'
-
 class ExactTarget
   class Client
   
@@ -38,6 +33,7 @@ class ExactTarget
           ).body
         )
       rescue SocketError
+        puts '[ExactTarget] Error: API request failed (SocketError).'
       end
     end
     
