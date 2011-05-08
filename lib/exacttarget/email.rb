@@ -14,6 +14,7 @@ module ExactTarget
       @value = ''
       
       result = send render(:email)
+      result
         .exacttarget
         .system
         .email
