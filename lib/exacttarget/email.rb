@@ -13,15 +13,7 @@ module ExactTarget
       @type = ''
       @value = ''
       
-      result = send render(:email)
-      puts result
-      result
-        .exacttarget
-        .system
-        .email
-        .emaillist.select do |email|
-          email.emailname.include? name.to_s
-      end
+      send render(:email)
     end
     
     private
