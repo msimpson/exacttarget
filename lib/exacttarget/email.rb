@@ -3,7 +3,25 @@ module ExactTarget
   
     public
     
+    def email_find
+      email_search(:all)
+    end
+    
+    def email_find_by_id(id)
+      email_search(:id, id)
+    end
+    
     def email_find_by_name(name)
+      email_search(:name, name)
+    end
+    
+    def email_find_by_subject(subject)
+      email_search(:subject, subject)
+    end
+    
+    private
+    
+    def email_search(filter = :all, value = '')
       # ExactTarget does not return more than one email
       # for any search besides all. So we must grab the
       # entire list and search here (slow, but necessary).
@@ -13,22 +31,44 @@ module ExactTarget
       @type = ''
       @value = ''
       
+      list = []
       send render(:email)
+        .exacttarget
+        .system
+        .email
+        .emaillist.each do |email|
+          if filter != :all
+            next if !email.send('email' + filter.to_s).content.include? value.to_s
+          end
+          
+          email.instance_eval do
+            list << {
+              :id           => emailid.content,
+              :name         => emailname.content,
+              :subject      => emailsubject.content,
+              :category_id  => category_id.content,
+              :body         => email_get_body(emailid.content)
+            }
+          end
+      end
+      
+      list
     end
-    
-    private
     
     def email_get_body(id)
       @action = 'retrieve'
       @sub_action = 'htmlemail'
       @type = 'emailid'
-      @value = id
+      @value = id.to_s
       
-      send(render(:email))
+      result = send(render(:email))
         .exacttarget
         .system
         .email
         .htmlbody
+        .content
+      
+      result.gsub /<!\[CDATA\[(.*?)\]\]>/, '\1'
     end
     
   end
