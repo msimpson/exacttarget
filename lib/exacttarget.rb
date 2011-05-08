@@ -1,5 +1,1 @@
-module ExactTarget
-  def self.do
-    "Initial"
-  end
-end
+require 'exacttarget/client'

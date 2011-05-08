@@ -1,0 +1,35 @@
+<system>
+  <system_name>email</system_name>
+  <action><%= @action -%></action>
+  <sub_action><%= @sub_action -%></sub_action>
+  <% if @action == 'retrieve' -%>
+    <search_type><%= @type -%></search_type>
+    <search_value><%= @value -%></search_value>
+    <search_value2></search_value2>
+    <% if @sub_action == 'all' -%>
+      <daterange>
+        <% if @type == 'daterange' || @type == 'emailnameanddaterange' -%>
+          <startdate><%= @start_date -%></startdate>
+          <enddate><%= @end_date -%></enddate>
+        <% end -%>
+      </daterange>
+    <% else -%>
+      <search_value3></search_value3>
+    <% end -%>
+  <% end -%>
+  <% if @action == 'add' -%>
+    <% if @sub_action == 'HTMLPaste' -%>
+      <category></category>
+      <email_name><%= @name -%></email_name>
+      <email_subject><%= @subject -%></email_subject>
+    <% else -%>
+      <search_type>emailid</search_type>  
+      <search_value><%= @id -%></search_value>
+    <% end -%>
+    <% if @method == 'file' -%>
+      <file_name><%= @file_name -%></file_name>
+    <% else -%>
+      <email_body><![ CDATA[<%= @body -%>]]></email_body>
+    <% end -%>
+  <% end -%>
+</system>
