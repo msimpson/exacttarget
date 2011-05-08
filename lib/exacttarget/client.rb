@@ -1,7 +1,9 @@
-class ExactTarget
+module ExactTarget
   class Client
   
     attr_reader :username, :password
+    
+    public
     
     def initialize(username, password)
       @username = username
