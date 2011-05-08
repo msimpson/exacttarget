@@ -41,7 +41,7 @@ module ExactTarget
             next if !email.send('email' + filter.to_s).content.include? value.to_s
           end
           
-          body = email_get_body(emailid.content)
+          body = email_get_body(email.emailid.content)
           
           email.instance_eval do
             list << {
