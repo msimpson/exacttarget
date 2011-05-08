@@ -3,8 +3,8 @@ module ExactTarget
   
     public
     
-    def email_find
-      email_search :all
+    def email_find_all
+      email_search
     end
     
     def email_find_by_id(id)
@@ -37,8 +37,11 @@ module ExactTarget
         .system
         .email
         .emaillist.each do |email|
-          if filter != :all
-            next if !email.send('email' + filter.to_s).content.include? value.to_s
+          case filter
+            when :id
+              next if !email.emailid.content == value.to_s
+            when :name, :subject
+              next if !email.send('email' + filter.to_s).content.include? value.to_s
           end
           
           body = (email_get_body(email.emailid.content) if get_body) || nil
