@@ -4,19 +4,19 @@ module ExactTarget
     public
     
     def email_find
-      email_search(:all)
+      email_search :all
     end
     
     def email_find_by_id(id)
-      email_search(:id, id)
+      email_search :id, id
     end
     
     def email_find_by_name(name)
-      email_search(:name, name)
+      email_search :name, name
     end
     
     def email_find_by_subject(subject)
-      email_search(:subject, subject)
+      email_search :subject, subject
     end
     
     private
@@ -32,7 +32,9 @@ module ExactTarget
       @value = ''
       
       list = []
-      send render(:email)
+      result = send render(:email)
+      puts result
+      result
         .exacttarget
         .system
         .email
