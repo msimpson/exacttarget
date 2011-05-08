@@ -8,7 +8,7 @@ module ExactTarget
       @sub_action = 'all'
       @type = 'emailnameanddaterange'
       @value = name.to_s
-      @start_date = 1/1/1970
+      @start_date = '1/1/1970'
       @end_date = Date.today.strftime '%-m/%-d/%Y'
       
       send render(:email)
