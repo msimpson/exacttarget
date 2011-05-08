@@ -3,6 +3,12 @@ module ExactTarget
   
     public
     
+    def email_find_all(body = false)
+      email_find({
+        :body => body
+      }.merge(options))
+    end
+    
     def email_find_by_id(id, options = {})
       email_find({
         :id => id,
