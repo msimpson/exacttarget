@@ -6,8 +6,10 @@ module ExactTarget
     def email_find_by_name(name)
       @action = 'retrieve'
       @sub_action = 'all'
-      @type = 'emailname'
+      @type = 'emailnameanddaterange'
       @value = name.to_s
+      @start_date = 1/1/1970
+      @end_date = Date.today.strftime '%-m/%-d/%Y'
       
       send render(:email)
     end
