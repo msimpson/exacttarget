@@ -4,14 +4,22 @@ module ExactTarget
     public
     
     def email_find_by_name(name)
+      # ExactTarget does not return more than one email
+      # for any search besides all. So we must grab the
+      # entire list and search here (slow, but necessary).
+      
       @action = 'retrieve'
       @sub_action = 'all'
-      @type = 'emailnameanddaterange'
-      @value = name.to_s
-      @start_date = '1/1/1970'
-      @end_date = Date.today.strftime '%-m/%-d/%Y'
+      @type = ''
+      @value = ''
       
-      send render(:email)
+      result = send render(:email)
+        .exacttarget
+        .system
+        .email
+        .emaillist.select do |email|
+          email.emailname.include? name.to_s
+      end
     end
     
     private
