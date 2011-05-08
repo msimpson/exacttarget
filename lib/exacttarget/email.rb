@@ -32,7 +32,9 @@ module ExactTarget
       @value = ''
       
       list = []
-      send(render(:email))
+      result = send(render(:email))
+      puts result
+      result
         .exacttarget
         .system
         .email
