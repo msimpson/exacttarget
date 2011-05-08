@@ -24,11 +24,7 @@
       <search_type>emailid</search_type>  
       <search_value><%= @id %></search_value>
     <% end %>
-    <% if @method == 'file' %>
-      <file_name><%= @file_name %></file_name>
-    <% else %>
-      <email_body><![ CDATA[<%= @body %>]]></email_body>
-    <% end %>
+    <email_body><![CDATA[<%= @body %>]]></email_body>
   <% end %>
   
 </system>
