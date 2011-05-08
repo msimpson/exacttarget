@@ -41,13 +41,15 @@ module ExactTarget
             next if !email.send('email' + filter.to_s).content.include? value.to_s
           end
           
+          body = email_get_body(emailid.content)
+          
           email.instance_eval do
             list << {
               :id           => emailid.content,
               :name         => emailname.content,
               :subject      => emailsubject.content,
               :category_id  => categoryid.content,
-              :body         => email_get_body(emailid.content)
+              :body         => body
             }
           end
       end
