@@ -3,7 +3,7 @@
   <system_name>filemanagement</system_name>
   <action>filemove</action>
   <source>
-    <location><%= @ftp_location %></location>
+    <location><%= @ftp[:location] %></location>
     <files>
       <% @files.each do |file| %>
         <filename><%= file %></filename>

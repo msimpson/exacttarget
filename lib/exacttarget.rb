@@ -7,6 +7,7 @@ end
 
 # Standard:
 require 'net/https'
+require 'net/ftp'
 require 'uri'
 require 'erb'
 
