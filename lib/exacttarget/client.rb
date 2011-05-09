@@ -40,18 +40,18 @@ module ExactTarget
     
     private
     
-    def put(file)
+    def put(file_path)
       begin
-        @ftp[:handle].put(file.to_s)
+        @ftp[:handle].put(file_path.to_s)
       rescue Exception => msg
         puts '[ExactTarget] Error: FTP put failed.'
         raise msg
       end
     end
     
-    def delete(file)
+    def delete(file_name)
       begin
-        @ftp[:handle].delete(file.to_s)
+        @ftp[:handle].delete(file_name.to_s)
       rescue Exception => msg
         puts '[ExactTarget] Error: FTP delete failed.'
         raise msg
