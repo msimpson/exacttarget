@@ -50,9 +50,16 @@ module ExactTarget
     end
     
     def delete(file_name)
+      tries = 2
+      wait  = 2
+      
       begin
         @ftp[:handle].delete(file_name.to_s)
-      rescue Exception => msg
+      rescue
+        tries -= 1
+        sleep wait
+        retry if tries > 0
+        
         puts '[ExactTarget] Error: FTP delete failed.'
         raise msg
       end
