@@ -10,6 +10,7 @@ GEM
     rake (0.8.7)
     rcov (0.9.9)
     shoulda (2.11.3)
+    yard (0.6.8)
 
 PLATFORMS
   ruby
@@ -18,5 +19,6 @@ DEPENDENCIES
   bundler (~> 1.0.0)
   jeweler (~> 1.6.0)
   nokogiri (>= 1.4.4)
-  rcov
-  shoulda
+  rcov (>= 0.9.9)
+  shoulda (>= 2.11.3)
+  yard (>= 0.6.8)

@@ -9,13 +9,23 @@ module ExactTarget
     :uri       => 'ftp1.exacttarget.com',
     :path      => '/import',
   }
-
+  
+  # @author Matthew Simpson
+  # @attr_reader [string] :username Your ExactTarget username.
+  # @attr_reader [string] :password Your ExactTarget password.
+  # @attr_reader [hash] :ftp A hash for FTP attributes.
   class Client
 
     attr_reader :username, :password, :ftp
     
     public
     
+    # @param [String] username Your ExactTarget username.
+    # @param [String] password Your ExactTarget password.
+    # @param [Hash] ftp FTP configuration.
+    # @option [String] :location The name of the FTP (e.g. ExactTargetFTP).
+    # @option [String] :uri The actual URI of the FTP itself (e.g. ftp.exacttarget.com).
+    # @option [String] :path The folder for imports (e.g. /import).
     def initialize(username, password, ftp_username = 'import', ftp_password = 'import', ftp = FTP_STANDARD)
       @username   = username
       @password   = password
