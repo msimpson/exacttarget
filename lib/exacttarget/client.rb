@@ -10,22 +10,28 @@ module ExactTarget
     :path      => '/import',
   }
   
+  # A Ruby implementation of the ExactTarget XML API.
   # @author Matthew Simpson
-  # @attr_reader [string] :username Your ExactTarget username.
-  # @attr_reader [string] :password Your ExactTarget password.
-  # @attr_reader [hash] :ftp A hash for FTP attributes.
   class Client
 
     attr_reader :username, :password, :ftp
     
     public
     
-    # @param [String] username Your ExactTarget username.
-    # @param [String] password Your ExactTarget password.
+    # @param [String] username ExactTarget username.
+    # @param [String] password ExactTarget password.
+    # @param [String] ftp_username FTP username.
+    # @param [String] ftp_password FTP password.
     # @param [Hash] ftp FTP configuration.
-    # @option [String] :location The name of the FTP (e.g. ExactTargetFTP).
-    # @option [String] :uri The actual URI of the FTP itself (e.g. ftp.exacttarget.com).
-    # @option [String] :path The folder for imports (e.g. /import).
+    # @option ftp [String] :location The name of the FTP (e.g. ExactTargetFTP).
+    # @option ftp [String] :uri The actual URI of the FTP itself (e.g. ftp.exacttarget.com).
+    # @option ftp [String] :path The folder for imports (e.g. /import).
+    # @example
+    #   # Default:
+    #   client = ExactTarget::Client.new 'username' 'password'
+    #
+    #   # Using ExactTargetEnhancedFTP:
+    #   client = ExactTarget::Client.new 'username' 'password' 'ftp_username' 'ftp_password' ExactTarget::FTP_ENHANCED
     def initialize(username, password, ftp_username = 'import', ftp_password = 'import', ftp = FTP_STANDARD)
       @username   = username
       @password   = password
