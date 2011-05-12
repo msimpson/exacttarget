@@ -21,6 +21,6 @@ See LICENSE.txt for further details.
 
 == Support
 
-API documentaiton will be available soon. But until then,
-email all bugs, concerns, etc. to matt.simpson@alextom.com.
+Provided through RubyDoc:
+http://rubydoc.info/github/msimpson/exacttarget/master/file/README.rdoc
 
