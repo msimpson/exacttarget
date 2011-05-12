@@ -22,5 +22,5 @@ See LICENSE.txt for further details.
 == Support
 
 Provided through RubyDoc:
-*http://rubydoc.info/github/msimpson/exacttarget/master/file/README.rdoc
+* http://rubydoc.info/github/msimpson/exacttarget/master/file/README.rdoc
 
