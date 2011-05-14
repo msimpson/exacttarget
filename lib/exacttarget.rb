@@ -8,8 +8,8 @@ require 'uri'
 require 'erb'
 
 # Library:
-require 'exacttarget/email'
-require 'exacttarget/image'
+#require 'exacttarget/email'
+#require 'exacttarget/image'
 
 class ExactTarget
   
@@ -50,7 +50,7 @@ class ExactTarget
       @ftp = Net::FTP.new(@config[:ftp_uri])
       @ftp.login @config[:ftp_username], @config[:ftp_password]
       @ftp.chdir @config[:ftp_path]
-    rescue Net::FTPPermError => msg
+    rescue => msg
       puts "#{ERROR} FTP access failed!"
       raise msg
     end
@@ -66,19 +66,19 @@ class ExactTarget
   def put(file_path)
     begin
       @ftp.put(file_path.to_s)
-    rescue Exception => msg
+    rescue => msg
       puts "#{ERROR} FTP put failed!"
       raise msg
     end
   end
   
   def delete(file_name)
-    tries = 2
-    wait  = 2
+    tries = 3
+    wait  = 3
     
     begin
-      @ftp[:handle].delete(file_name.to_s)
-    rescue
+      @ftp.delete(file_name.to_s)
+    rescue => msg
       tries -= 1
       sleep wait
       retry if tries > 0
@@ -105,7 +105,7 @@ class ExactTarget
           'Content-length' => post.length.to_s
         }
       ).body
-    rescue SocketError => msg
+    rescue => msg
       puts "#{ERROR} API request failed."
       raise msg
     end
