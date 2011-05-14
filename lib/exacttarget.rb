@@ -8,8 +8,8 @@ require 'uri'
 require 'erb'
 
 # Library:
-#require 'exacttarget/email'
-#require 'exacttarget/image'
+require 'exacttarget/email'
+require 'exacttarget/image'
 
 class ExactTarget
   
