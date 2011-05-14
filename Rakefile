@@ -41,3 +41,12 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+task :push do
+  system "yardoc"
+  system "git add ."
+  system "rake gemspec:generate"
+  system "git add ."
+  system "git commit -a"
+  system "rake git:release"
+end
