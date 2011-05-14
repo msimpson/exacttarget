@@ -25,7 +25,7 @@ class ExactTarget
     end
     
     {
-      :file_path => file_path,
+      :file_path => file_path.to_s,
       :old_name  => @name,
       :new_name  => name,
       :error     => error
