@@ -13,7 +13,9 @@ require 'exacttarget/image'
 
 class ExactTarget
   
-  ERROR  = '[ExactTarget] Error:'
+  MSG   = '[ExactTarget]'
+  ERROR = "#{MSG} Error:"
+  WARN  = "#{MSG} Warning:"
   
   FTP_STANDARD_NAME = 'ExactTargetFTP'
   FTP_STANDARD_URI  = 'ftp.exacttarget.com'
@@ -45,7 +47,15 @@ class ExactTarget
        raise "#{ERROR} username and password required!"
     end
     
-    # Start FTP:
+    ftp_connect
+    @uri = URI.parse(@config[:api_uri])
+    @api = Net::HTTP.new(@uri.host, @uri.port)
+    @api.use_ssl = true
+  end
+  
+  private
+  
+  def ftp_connect
     begin
       @ftp = Net::FTP.new(@config[:ftp_uri])
       @ftp.login @config[:ftp_username], @config[:ftp_password]
@@ -54,17 +64,13 @@ class ExactTarget
       puts "#{ERROR} FTP access failed!"
       raise msg
     end
-    
-    # Start HTTP:
-    @uri = URI.parse(@config[:api_uri])
-    @api = Net::HTTP.new(@uri.host, @uri.port)
-    @api.use_ssl = true
   end
   
-  private
-  
-  def put(file_path)
+  def ftp_put(file_path)
+    ftp_connect if @ftp.closed?
+    
     begin
+      @ftp.noop
       @ftp.put(file_path.to_s)
     rescue => msg
       puts "#{ERROR} FTP put failed!"
@@ -72,17 +78,13 @@ class ExactTarget
     end
   end
   
-  def delete(file_name)
-    tries = 3
-    wait  = 3
+  def ftp_delete(file_name)
+    ftp_connect if @ftp.closed?
     
     begin
+      @ftp.noop
       @ftp.delete(file_name.to_s)
     rescue => msg
-      tries -= 1
-      sleep wait
-      retry if tries > 0
-      
       puts "#{ERROR} FTP delete failed!"
       raise msg
     end
