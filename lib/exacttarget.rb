@@ -1,9 +1,5 @@
 # Nokogiri is required for XML parsing:
-begin
-  require 'nokogiri'
-rescue LoadError
-  raise '[ExactTarget] Error: Nokogiri is missing, run "bundle install".'
-end
+require 'nokogiri'
 
 # Standard:
 require 'net/https'

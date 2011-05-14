@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Matthew Simpson"]
-  s.date = %q{2011-05-11}
+  s.date = %q{2011-05-14}
   s.description = %q{ExactTarget is a client system for communicating with the ExactTarget email system. The client supports the most up-to-date XML API and is capable of uploading email pastes, images and retrieving lists of subscribers, emails and more.}
   s.email = %q{matt.simpson@alextom.com}
   s.extra_rdoc_files = [

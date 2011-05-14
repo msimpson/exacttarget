@@ -1,6 +1,5 @@
-module ExactTarget
-  class Client
-  
+class ExactTarget
+    
     public
     
     def image_import(file_path)
@@ -27,5 +26,4 @@ module ExactTarget
       }
     end
     
-  end
 end

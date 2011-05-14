@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <exacttarget>
   <authorization>
-    <username><%= @username %></username>
-    <password><%= @password %></password>
+    <username><%= @config[:username] %></username>
+    <password><%= @config[:password] %></password>
   </authorization>
   <%= @system %>
 </exacttarget>
