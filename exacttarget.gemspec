@@ -26,7 +26,6 @@ Gem::Specification.new do |s|
     "VERSION",
     "exacttarget.gemspec",
     "lib/exacttarget.rb",
-    "lib/exacttarget/client.rb",
     "lib/exacttarget/email.rb",
     "lib/exacttarget/image.rb",
     "lib/exacttarget/templates/email.xml.erb",
