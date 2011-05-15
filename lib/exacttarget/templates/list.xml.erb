@@ -1,0 +1,11 @@
+<system>
+
+  <system_name>list</system_name>
+  <action><%= @action %></action>
+  
+  <% if @action == 'retrieve' %>
+    <search_type><%= @type %></search_type>
+    <search_value><%= @value %></search_value>
+  <% end %>
+  
+</system>

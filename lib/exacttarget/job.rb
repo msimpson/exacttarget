@@ -53,4 +53,6 @@ class ExactTarget
     desc
   end
   
+  alias :email_send :job_send
+  
 end

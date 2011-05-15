@@ -9,6 +9,7 @@ require 'erb'
 
 # Library:
 require 'exacttarget/job'
+require 'exacttarget/list'
 require 'exacttarget/email'
 require 'exacttarget/image'
 

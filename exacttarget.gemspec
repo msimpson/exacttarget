@@ -29,9 +29,11 @@ Gem::Specification.new do |s|
     "lib/exacttarget/email.rb",
     "lib/exacttarget/image.rb",
     "lib/exacttarget/job.rb",
+    "lib/exacttarget/list.rb",
     "lib/exacttarget/templates/email.xml.erb",
     "lib/exacttarget/templates/image.xml.erb",
     "lib/exacttarget/templates/job.xml.erb",
+    "lib/exacttarget/templates/list.xml.erb",
     "lib/exacttarget/templates/main.xml.erb"
   ]
   s.homepage = %q{http://github.com/msimpson/exacttarget}

@@ -2,8 +2,6 @@ class ExactTarget
   
   public
   
-  alias :email_send :job_send
-  
   # Find all emails.
   #
   # @param [bool] body Retrieve HTML body of each email (can cause seriously lag) [dangerous]
@@ -55,9 +53,9 @@ class ExactTarget
   # @option options [int,string] :id Email ID
   # @option options [string] :name Name of the email (keyword search)
   # @option options [string] :subject Subject of the email (keyword search)
-  # @option options [date] :start_date The date at which to start the search
-  # @option options [date] :end_date The date at which to end the search
-  # @option options [bool] :get_body Whether or not to retrieve the HTML body of the email
+  # @option options [date] :start The date at which to start the search
+  # @option options [date] :end The date at which to end the search
+  # @option options [bool] :body Whether or not to retrieve the HTML body of the email
   #
   def email_find(options = {})
     @action     = 'retrieve'
