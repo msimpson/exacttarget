@@ -39,16 +39,6 @@ class ExactTarget
     get_body    = options[:body]    || false
     list        = []
     
-    format = Proc.new { |date|
-      begin
-        return date if date.instance_of? Date
-        Date.strptime(date, '%m/%d/%Y')
-      rescue => msg
-        puts "#{ERROR} invalid date!"
-        raise msg
-      end
-    }
-    
     Nokogiri::Slop(send(render(:email)))
       .exacttarget
       .system
@@ -58,10 +48,10 @@ class ExactTarget
         (next if !email.emailname.content.include? name.to_s) if name
         (next if !email.emailsubject.content.include? subject.to_s) if subject
         
-        date = format.call(email.emailcreateddate.content)
+        date = Date.strptime(email.emailcreateddate.content, '%m/%d/%Y')
         
-        (next if date < format.call(start_date)) if start_date
-        (next if date > format.call(end_date)) if end_date
+        (next if date < start_date) if start_date && start_date.instance_of?(Date)
+        (next if date > end_date) if end_date && end_date.instance_of?(Date)
         
         body = email_get_body(email.emailid.content) if get_body
         
@@ -70,7 +60,7 @@ class ExactTarget
             :id           => emailid.content,
             :name         => emailname.content,
             :subject      => emailsubject.content,
-            :date         => email.emailcreateddate.content,
+            :date         => date,
             :category_id  => categoryid.content
           }
           
