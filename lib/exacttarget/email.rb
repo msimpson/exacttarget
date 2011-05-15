@@ -4,10 +4,20 @@ class ExactTarget
   
   alias :email_send :job_send
   
+  # Find all emails.
+  #
+  # @param [bool] body Retrieve HTML body of each email (can cause seriously lag) [dangerous]
+  #
   def email_find_all(body = false)
     email_find({ :body => body })
   end
   
+  # Retrieve an email by its ID.
+  #
+  # @param [int,string] id Email ID
+  # @param [hash] options Other options
+  # @see ExactTarget#email_find
+  #
   def email_find_by_id(id, options = {})
     email_find({
       :id => id,
@@ -15,18 +25,40 @@ class ExactTarget
     }.merge(options))
   end
   
+  # Find all emails who's name includes the given keyword.
+  #
+  # @param [string] name Name of the email (keyword)
+  # @param [hash] options Other options
+  # @see ExactTarget#email_find
+  #
   def email_find_by_name(name, options = {})
     email_find({
       :name => name,
     }.merge(options))
   end
   
+  # Find all emails who's subject includes the given keyword.
+  #
+  # @param [string] subject Subject of the email (keyword)
+  # @param [hash] options Other options
+  # @see ExactTarget#email_find
+  #
   def email_find_by_subject(subject, options = {})
     email_find({
       :subject => subject,
     }.merge(options))
   end
   
+  # Find all emails who's attributes match the selected options.
+  #
+  # @param [hash] options Options hash
+  # @option options [int,string] :id Email ID
+  # @option options [string] :name Name of the email (keyword search)
+  # @option options [string] :subject Subject of the email (keyword search)
+  # @option options [date] :start_date The date at which to start the search
+  # @option options [date] :end_date The date at which to end the search
+  # @option options [bool] :get_body Whether or not to retrieve the HTML body of the email
+  #
   def email_find(options = {})
     @action     = 'retrieve'
     @sub_action = 'all'
@@ -74,6 +106,13 @@ class ExactTarget
     list
   end
   
+  # Create an email.
+  #
+  # @param [string] name Name of the new email
+  # @param [string] subject The subject line
+  # @param [string] html The HTML source
+  # @param [string] text The text version (optional)
+  #
   def email_create(name, subject, html, text = false)
     id = email_add_html(name, subject, html)
     email_add_text(id, text) if text

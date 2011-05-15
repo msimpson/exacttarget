@@ -14,7 +14,8 @@ require 'exacttarget/image'
 # ExactTarget XML API wrapper
 #
 # @author Matthew Simpson (matt.simpson@alextom.com)
-# @attr_reader [hash] :config configuration hash
+# @attr_reader [hash] :config Configuration hash
+#
 class ExactTarget
   
   public
@@ -33,7 +34,7 @@ class ExactTarget
   
   attr_reader :config
   
-  # Initialize (constructor)
+  # The constructor.
   #
   # @example
   #  # Simple:
@@ -50,7 +51,7 @@ class ExactTarget
   #    :ftp_path     => ExactTarget::FTP_ENHANCED_PATH
   #  )
   #
-  # @param [Hash] config configuration hash (required)
+  # @param [Hash] config Configuration hash (required)
   # @option config [String] :username Username (required)
   # @option config [String] :password Password (required)
   # @option config [String] :api_uri ExactTarget API URI (needs to be the asp path)

@@ -2,6 +2,7 @@ class ExactTarget
   
   public
   
+  # Sends an email to an collection of lists or groups.
   def job_send(options)
     @options = {
       :id         => nil,
