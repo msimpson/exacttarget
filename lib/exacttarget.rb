@@ -14,7 +14,7 @@ require 'exacttarget/group'
 require 'exacttarget/email'
 require 'exacttarget/image'
 
-# ExactTarget XML API wrapper.
+# Ruby wrapper for the ExactTarget XML API.
 #
 # @author Matthew Simpson (matt.simpson@alextom.com)
 # @attr_reader [hash] :config Configuration hash
