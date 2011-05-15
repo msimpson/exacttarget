@@ -35,16 +35,6 @@ class ExactTarget
   
   # Initialize (constructor)
   #
-  # @param [Hash] options configuration options (required)
-  # @option options [String] :username Username (required)
-  # @option options [String] :password Password (required)
-  # @option options [String] :api_uri ExactTarget API URI (needs to be the asp path)
-  # @option options [String] :ftp_username FTP username (default: import)
-  # @option options [String] :ftp_password FTP password (default: import)
-  # @option options [String] :ftp_name FTP name (default: ExactTargetFTP)
-  # @option options [String] :ftp_uri FTP URI (default: ftp.exacttarget.com)
-  # @option options [String] :ftp_path FTP path (defaults to root '/')
-  #
   # @example
   #  # Simple:
   #  client = ExactTarget.new :username => 'username', :password => 'password'
@@ -59,6 +49,16 @@ class ExactTarget
   #    :ftp_uri      => ExactTarget::FTP_ENHANCED_URI,
   #    :ftp_path     => ExactTarget::FTP_ENHANCED_PATH
   #  )
+  #
+  # @param [Hash] config configuration hash (required)
+  # @option config [String] :username Username (required)
+  # @option config [String] :password Password (required)
+  # @option config [String] :api_uri ExactTarget API URI (needs to be the asp path)
+  # @option config [String] :ftp_username FTP username (default: import)
+  # @option config [String] :ftp_password FTP password (default: import)
+  # @option config [String] :ftp_name FTP name (default: ExactTargetFTP)
+  # @option config [String] :ftp_uri FTP URI (default: ftp.exacttarget.com)
+  # @option config [String] :ftp_path FTP path (defaults to root '/')
   #
   def initialize(config)
     @config = {
