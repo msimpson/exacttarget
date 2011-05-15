@@ -2,6 +2,10 @@ class ExactTarget
   
   public
   
+  # Upload an image (note: uses the FTP and cleans up afterward).
+  #
+  # @param [string] file_path The file path of the image to upload/import
+  #
   def image_import(file_path)
     @name  = File.basename(file_path)
     

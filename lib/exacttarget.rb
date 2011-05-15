@@ -11,7 +11,7 @@ require 'erb'
 require 'exacttarget/email'
 require 'exacttarget/image'
 
-# ExactTarget XML API wrapper
+# ExactTarget XML API wrapper.
 #
 # @author Matthew Simpson (matt.simpson@alextom.com)
 # @attr_reader [hash] :config Configuration hash
@@ -34,7 +34,7 @@ class ExactTarget
   
   attr_reader :config
   
-  # The constructor.
+  # Create a new ExactTarget API client.
   #
   # @example
   #  # Simple:

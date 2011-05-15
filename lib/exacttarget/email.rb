@@ -111,7 +111,7 @@ class ExactTarget
   # @param [string] name Name of the new email
   # @param [string] subject The subject line
   # @param [string] html The HTML source
-  # @param [string] text The text version (optional)
+  # @param [string] text The text version
   #
   def email_create(name, subject, html, text = false)
     id = email_add_html(name, subject, html)
