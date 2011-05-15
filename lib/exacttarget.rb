@@ -46,6 +46,10 @@ class ExactTarget
   # @option options [String] :ftp_path FTP path (defaults to root '/')
   #
   # @example
+  #  Simple:
+  #  client = ExactTarget.new :username => 'username', :password => 'password'
+  #
+  #  Using the enhanced FTP:
   #  client = ExactTarget.new(
   #    :username     => 'username',
   #    :password     => 'password',
