@@ -1,5 +1,5 @@
 class ExactTarget
-    
+  
   public
   
   def image_import(file_path)
@@ -31,5 +31,5 @@ class ExactTarget
       :error     => error
     }
   end
-    
+  
 end

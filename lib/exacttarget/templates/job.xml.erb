@@ -1,0 +1,31 @@
+<system>
+
+  <system_name>job</system_name>
+  <action>send</action>
+  <search_type>emailid</search_type>
+  <search_value><%= @options[:id].to_s %></search_value>
+  
+  <from_name><%= @options[:from_name].to_s %></from_name>
+  <from_email><%= @options[:from_email].to_s %></from_email>
+  <additional><%= @options[:additional].to_s %></additional>
+  <multipart_mime><%= @options[:multipart].to_s %></multipart_mime>
+  <track_links><%= @options[:track].to_s %></track_links>
+  
+  <send_date><%= @date %></send_date>
+  <send_time><%= @time %></send_time>
+  
+  <lists>
+    <% @options[:include].each do |id| %>
+      <list><%= id %></list>
+    <% end %>
+  </lists>
+  
+  <suppress>
+    <% @options[:exclude].each do |id| %>
+      <list><%= id %></list>
+    <% end %>
+  </suppress>
+  
+  <test_send><%= @options[:test].to_s %></test_send>
+    
+</system>

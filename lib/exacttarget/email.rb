@@ -41,7 +41,7 @@ class ExactTarget
     
     format = Proc.new { |date|
       begin
-        date if date.instance_of? Date
+        return date if date.instance_of? Date
         Date.strptime(date, '%m/%d/%Y')
       rescue => msg
         puts "#{ERROR} invalid date!"
