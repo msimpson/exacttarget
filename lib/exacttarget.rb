@@ -11,6 +11,10 @@ require 'erb'
 require 'exacttarget/email'
 require 'exacttarget/image'
 
+# ExactTarget XML API wrapper
+#
+# @author Matthew Simpson (matt.simpson@alextom.com)
+# @attr_reader [hash] :config configuration hash
 class ExactTarget
   
   public
@@ -29,6 +33,29 @@ class ExactTarget
   
   attr_reader :config
   
+  # Initialize (constructor)
+  #
+  # @param [Hash] options configuration options (required)
+  # @option options [String] :username Username (required)
+  # @option options [String] :password Password (required)
+  # @option options [String] :api_uri ExactTarget API URI (needs to be the asp path)
+  # @option options [String] :ftp_username FTP username (default: import)
+  # @option options [String] :ftp_password FTP password (default: import)
+  # @option options [String] :ftp_name FTP name (default: ExactTargetFTP)
+  # @option options [String] :ftp_uri FTP URI (default: ftp.exacttarget.com)
+  # @option options [String] :ftp_path FTP path (defaults to root '/')
+  #
+  # @example
+  #  client = ExactTarget.new(
+  #    :username     => 'username',
+  #    :password     => 'password',
+  #    :ftp_username => '123456',
+  #    :ftp_password => '123456',
+  #    :ftp_name     => ExactTarget::FTP_ENHANCED_NAME,
+  #    :ftp_uri      => ExactTarget::FTP_ENHANCED_URI,
+  #    :ftp_path     => ExactTarget::FTP_ENHANCED_PATH
+  #  )
+  #
   def initialize(config)
     @config = {
       :username     => nil,
