@@ -111,6 +111,8 @@ class ExactTarget
   # @param [string] html The HTML source
   # @param [string] text The text version
   #
+  # @see ExactTarget#job_send #email_send (job_send) for sending emails.
+  #
   def email_create(name, subject, html, text = false)
     id = email_add_html(name, subject, html)
     email_add_text(id, text) if text

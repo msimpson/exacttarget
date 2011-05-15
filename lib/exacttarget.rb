@@ -10,6 +10,7 @@ require 'erb'
 # Library:
 require 'exacttarget/job'
 require 'exacttarget/list'
+require 'exacttarget/group'
 require 'exacttarget/email'
 require 'exacttarget/image'
 
@@ -22,16 +23,23 @@ class ExactTarget
   
   public
   
+  # Error/warning message header:
   MSG   = '[ExactTarget]'
+  # For error messages:
   ERROR = "#{MSG} Error:"
+  # For warning messages:
   WARN  = "#{MSG} Warning:"
-  
+  # The standard FTP name:
   FTP_STANDARD_NAME = 'ExactTargetFTP'
+  # The standard FTP URI:
   FTP_STANDARD_URI  = 'ftp.exacttarget.com'
+  # The standard FTP path (directory):
   FTP_STANDARD_PATH = '/'
-  
+  # The enhanced FTP name:
   FTP_ENHANCED_NAME = 'ExactTargetEnhancedFTP'
+  # The enhanced FTP URI:
   FTP_ENHANCED_URI  = 'ftp1.exacttarget.com'
+  # The enhanced FTP path (directory):
   FTP_ENHANCED_PATH = '/import'
   
   attr_reader :config

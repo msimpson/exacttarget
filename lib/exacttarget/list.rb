@@ -48,12 +48,12 @@ class ExactTarget
   # @option options [date] :end The date at which to end the search
   #
   def list_find(options = {})
-    id          = options[:id]      || false
-    name        = options[:name]    || false
-    type        = options[:type]    || false
-    start_date  = options[:start]   || false
-    end_date    = options[:end]     || false
-    list        = list_get_all
+    id         = options[:id]    || false
+    name       = options[:name]  || false
+    type       = options[:type]  || false
+    start_date = options[:start] || false
+    end_date   = options[:end]   || false
+    list       = list_get_all
     
     list.select do |item|
       (next if item[:id] != id.to_s) if id
