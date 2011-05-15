@@ -2,6 +2,8 @@ class ExactTarget
   
   public
   
+  alias :email_send :job_send
+  
   def email_find_all(body = false)
     email_find({ :body => body })
   end

@@ -13,6 +13,8 @@ require 'exacttarget/image'
 
 class ExactTarget
   
+  public
+  
   MSG   = '[ExactTarget]'
   ERROR = "#{MSG} Error:"
   WARN  = "#{MSG} Warning:"
@@ -26,8 +28,6 @@ class ExactTarget
   FTP_ENHANCED_PATH = '/import'
   
   attr_reader :config
-  
-  public
   
   def initialize(config)
     @config = {

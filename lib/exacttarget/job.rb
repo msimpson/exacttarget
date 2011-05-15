@@ -2,7 +2,7 @@ class ExactTarget
   
   public
   
-  def job_send(options = {})
+  def job_send(options)
     @options = {
       :id         => nil,
       :include    => [],
@@ -16,6 +16,7 @@ class ExactTarget
       :test       => false
     }.merge(options)
     
+    # Sanity check:
     if @options[:id].nil? ||
        @options[:include].empty?
        raise "#{ERROR} id and include array/string required!"
