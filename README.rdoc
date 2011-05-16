@@ -8,11 +8,34 @@ retrieving lists of subscribers, emails and more.
 
 The latest version of ExactTarget can be installed with Rubygems:
 
-  % [sudo] gem install exacttarget
+  [sudo] gem install exacttarget
   
 Source code can be downloaded on GitHub
 
 * https://github.com/msimpson/exacttarget
+
+== Example Usage
+
+  # Setup a new client:
+  client = ExactTarget.new(
+    :username     => 'username',
+    :password     => 'password',
+    :ftp_username => '123456',
+    :ftp_password => '123456',
+    :ftp_name     => ExactTarget::FTP_ENHANCED_NAME,
+    :ftp_uri      => ExactTarget::FTP_ENHANCED_URI,
+    :ftp_path     => ExactTarget::FTP_ENHANCED_PATH
+  )
+  
+  # Create a new email:
+  email_id = client.email_create 'New', 'Hi there.', '<html><div>Foo</div></html>'
+  
+  # Find subscriber lists containing
+  # the keyword "Test" in their name:
+  lists = client.list_find_by_name 'Test'
+  
+  # Send that email to each list:
+  email_send :id => email_id, :include => (lists.map { |list| list[:id] })
 
 == License
 
