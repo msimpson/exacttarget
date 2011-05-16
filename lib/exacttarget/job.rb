@@ -4,6 +4,24 @@ class ExactTarget
   
   # Send an email to a collection of lists or groups.
   #
+  #   This function takes its name from the API call it makes,
+  #   but it is aliased as "email_send." And for good reason,
+  #   as that accurately describes its true function.
+  #
+  # @example
+  #   # Simple:
+  #   email_send :id => 123456, :include => [789456, 654789]
+  #
+  #   # Advanced:
+  #   email_send(
+  #     :id         => 123456,
+  #     :include    => [789456, 654789],
+  #     :when       => DateTime.parse('10:22pm'),
+  #     :from_name  => 'Ruby',
+  #     :from_email => 'newsletter@ruby-lang.org',
+  #     :track      => false
+  #   )
+  #
   # @param [hash] options Options hash
   # @option options [int,string] :id Email ID
   # @option options [array] :include The collection of lists or groups to target

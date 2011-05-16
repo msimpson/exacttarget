@@ -8,11 +8,11 @@ require 'uri'
 require 'erb'
 
 # Library:
-require 'exacttarget/job'
-require 'exacttarget/list'
-require 'exacttarget/group'
-require 'exacttarget/email'
-require 'exacttarget/image'
+#require 'exacttarget/job'
+#require 'exacttarget/list'
+#require 'exacttarget/group'
+#require 'exacttarget/email'
+#require 'exacttarget/image'
 
 # Ruby wrapper for the ExactTarget XML API.
 #
@@ -89,6 +89,7 @@ class ExactTarget
        raise "#{ERROR} username and password required!"
     end
     
+    # Configure/start services:
     ftp_connect
     @uri = URI.parse(@config[:api_uri])
     @api = Net::HTTP.new(@uri.host, @uri.port)
@@ -132,12 +133,20 @@ class ExactTarget
     end
   end
   
+  # Renders XML templates for making API calls.
+  #
+  # @param [string] template The template to render
+  #
   def render(template)
     path = File.join(File.dirname(__FILE__), "exacttarget/templates/#{template.to_s}.xml.erb")
     file = File.open(path, 'r').read
     ERB.new(file, 0, '<>').result(binding)
   end
   
+  # Sends an API call.
+  #
+  # @param [string] xml The system XML to send
+  #
   def send(xml)
     @system = xml
     post = 'qf=xml&xml=' + URI.escape(render(:main))

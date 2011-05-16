@@ -106,6 +106,21 @@ class ExactTarget
   
   # Create an email.
   #
+  #   Note: The text version is generated automatically by ExactTarget.
+  #         Just specify one here to overwrite the default.
+  #
+  # @example
+  #   # Simple:
+  #   client.email_create 'New', 'Hi there.', '<html><div>Foo</div></html>'
+  #
+  #   # Realistic:
+  #   client.email_create(
+  #     'New',
+  #     'Hi there.',
+  #     htmlString,
+  #     textString
+  #   )
+  #
   # @param [string] name Name of the new email
   # @param [string] subject The subject line
   # @param [string] html The HTML source
