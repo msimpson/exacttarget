@@ -44,8 +44,8 @@ class ExactTarget
   # @option options [int,string] :id list ID
   # @option options [string] :name Name of the list (keyword search)
   # @option options [string] :type Type of the list (keyword search)
-  # @option options [date] :start The date at which to start the search
-  # @option options [date] :end The date at which to end the search
+  # @option options [datetime] :start The date at which to start the search
+  # @option options [datetime] :end The date at which to end the search
   #
   def list_find(options = {})
     id         = options[:id]    || false
