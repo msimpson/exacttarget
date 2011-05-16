@@ -35,7 +35,7 @@ Source code can be downloaded on GitHub
   lists = client.list_find_by_name 'Test'
   
   # Send that email to each list:
-  email_send :id => email_id, :include => (lists.map { |list| list[:id] })
+  client.email_send :id => email_id, :include => (lists.map { |list| list[:id] })
 
 == License
 
