@@ -4,7 +4,7 @@ class ExactTarget
   
   # Find all emails.
   #
-  # @param [bool] body Retrieve HTML body of each email (can cause seriously lag) [dangerous]
+  # @param [bool] body Retrieve HTML body of each email (can cause serious lag) [dangerous]
   #
   def email_find_all(body = false)
     email_find({ :body => body })
